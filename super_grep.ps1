@@ -1,11 +1,15 @@
 [CmdletBinding()]
 param (
-    [Parameter(Mandatory=$true)]
-    [string]$Path,
+    [Parameter()]
+    [string]$Path = "",
     [Parameter(Mandatory=$true)]
     [string]$String,
     [int]$SleepDurationInSeconds = 2
 )
+
+if ($Path -eq "") {
+    $Path = (Resolve-Path .).Path
+}
 
 $alreadyPrintedCodeBlocks = @{}
 
